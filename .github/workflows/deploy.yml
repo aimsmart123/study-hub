@@ -37,9 +37,9 @@ jobs:
         env:
           CLASS10_PASSWORD: ${{ secrets.CLASS10_PASSWORD }}
         run: |
-          npx --yes staticrypt CBSE/Class10/index.html \
+          npx --yes staticrypt CBSE/Class-10/index.html \
             -p "$CLASS10_PASSWORD" \
-            -d CBSE/Class10 \
+            -d CBSE/Class-10 \
             --remember 0 \
             --short \
             --template-title "AIM SMART – Enter Password" \
