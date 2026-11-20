@@ -28,6 +28,24 @@ jobs:
       - name: Generate index pages
         run: python generate_index.py
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Encrypt Class-level index pages with StatiCrypt
+        env:
+          CLASS10_PASSWORD: ${{ secrets.CLASS10_PASSWORD }}
+        run: |
+          npx --yes staticrypt CBSE/Class10/index.html \
+            -p "$CLASS10_PASSWORD" \
+            -d CBSE/Class10 \
+            --remember 0 \
+            --short \
+            --template-title "AIM SMART – Enter Password" \
+            --template-instructions "Enter the password given by your teacher" \
+            --template-button "Unlock"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
